@@ -12,3 +12,9 @@ Yahoo!ニュース カテゴリー別記事タイトル一覧
   - science.txt
   - sports.txt
   - world.txt
+
+
+# Macでmatplotlibを使う
+```bash
+$ echo "backend: TkAgg" >> ~/.matplotlib/matplotlibrc
+```
