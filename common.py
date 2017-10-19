@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import MeCab
 from gensim import corpora, models, matutils
 from sklearn.model_selection import train_test_split
@@ -6,10 +7,11 @@ from sklearn.externals import joblib
 mecab = MeCab.Tagger()
 mecab.parse('')
 
-CATEGORIES = {
-    0: 'computer',
-    1: 'domestic'
-}
+CATEGORIES = OrderedDict([
+    (0, 'computer'),
+    (1, 'domestic'),
+    (2, 'economy')
+])
 
 DICT_PATH = 'dictionary.dict'
 TFIDF_MODEL_PATH = 'tfidf.model'
@@ -28,6 +30,7 @@ def tokenize(text):
 def load_file(path):
     with open(path, 'r') as f:
         lines = [line.rstrip('\r\n') for line in f]
+    print('ファイルを読み込みました:', path)
     return lines
 
 def load_documents():

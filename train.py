@@ -13,7 +13,7 @@ print('形態素解析によりトークン化しました: ドキュメント�
 print('')
 
 dictionary = corpora.Dictionary(documents)
-dictionary.filter_extremes(no_above=0.8)
+dictionary.filter_extremes(no_above=0.7)
 print('辞書を作成しました: ユニークトークン数=%s' % (len(dictionary)))
 print('')
 
@@ -47,7 +47,7 @@ print('SVM学習モデルの作成を開始します ===>')
 svc = SVC(kernel='rbf')
 C_range = [0.1, 1, 5, 10]
 gamma_range = [0.1, 1, 5, 10]
-clf = GridSearchCV(svc, dict(C=C_range, gamma=gamma_range), verbose=3)
+clf = GridSearchCV(svc, dict(C=C_range, gamma=gamma_range), verbose=3, n_jobs=4)
 clf.fit(X_train, y_train)
 print('<=== SVM学習モデルの作成が終了しました')
 print('')
